@@ -42,7 +42,6 @@ module Tire
         end
 
         a.index.refresh
-        sleep(1.5)
 
         # The index should contain 2 documents
         assert_equal 2, Tire.search('supermodel_articles') { query { all } }.results.size
@@ -62,9 +61,7 @@ module Tire
         a = SupermodelArticle.new :title => 'Test'
         a.save
         a.destroy
-
         a.index.refresh
-        sleep(1.25)
 
         results = SupermodelArticle.search 'test'
         
@@ -93,9 +90,7 @@ module Tire
         should "load the underlying model" do
           a = SupermodelArticle.new :title => 'Test'
           a.save
-
           a.index.refresh
-          sleep(1.5)
 
           results = SupermodelArticle.search 'test'
 
